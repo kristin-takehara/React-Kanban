@@ -1,8 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const priority = sequelize.define('priority', {
-    state: {type: DataTypes.STRING, allowNull: false},
-    createdAt: {type: DataTypes.DATE, allowNull: false},
-    updatedAt: {type: DataTypes.DATE, allowNull: false}
+    state: {type: DataTypes.STRING, allowNull: false}
   });
 
   priority.associate = function(models) {

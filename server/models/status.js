@@ -1,8 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const status = sequelize.define('status', {
-    state: {type: DataTypes.STRING, allowNull: false},
-    createdAt: {type: DataTypes.DATE, allowNull: false},
-    updatedAt: {type: DataTypes.DATE, allowNull: false}
+    state: {type: DataTypes.STRING, allowNull: false}
   });
 
   status.associate = function(models) {
