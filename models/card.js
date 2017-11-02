@@ -11,13 +11,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-    card.hasMany(models.user, {
-      onUpdate: "CASCADE",
-      foreignKey: {
-        assignment: "assigned_to",
-        allowNull: true
-      }
-    });
   };
   return card;
 };
