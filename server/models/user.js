@@ -15,14 +15,9 @@ module.exports = function(sequelize, DataTypes) {
   user.associate = function(models) {
     user.hasMany(models.card, {
       onUpdate: "CASCADE",
-      foreignKey: "created_by_id",
-      as: "Cards"
-    });
-    user.hasMany(models.card, {
-      onUpdate: "CASCADE",
-      foreignKey: "assigned_to_id",
+      foreignKey: "assigned_to",
       as: "Tasks"
     });
-  }
+  };
   return user;
 };

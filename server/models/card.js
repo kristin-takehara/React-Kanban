@@ -2,11 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   const card = sequelize.define('card', {
-    title: {type: DataTypes.STRING, allowNull: false, unique: true},
-    created_by_id: DataTypes.INTEGER,
-    assigned_to_id: DataTypes.INTEGER,
-    priority: DataTypes.INTEGER,
-    status: DataTypes.INTEGER
+    title: {type: DataTypes.STRING, allowNull: false, unique: true}
   },
   {
     tableName: 'cards'
@@ -15,15 +11,14 @@ module.exports = function(sequelize, DataTypes) {
   card.associate = function(models) {
     card.belongsTo(models.user, {
       onUpdate: "CASCADE",
-      foreignKey: "created_by_id",
-      allowNull: false,
-      as: "Creator"
+      foreignKey: "status",
+      as: "Status",
     });
     card.belongsTo(models.user, {
       onUpdate: "CASCADE",
-      foreignKey: "assigned_to_id",
-      as: "Dev"
+      foreignKey: "assigned_to",
+      as: "Asignee"
     });
-  }
+  };
   return card;
 };
