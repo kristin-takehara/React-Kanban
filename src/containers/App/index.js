@@ -3,7 +3,7 @@ import { connect } from 'react-redux'; //this bridges the component to the redux
 
 // import { loadCards } from '../../actions/cards';
 
-import NewCardForm from '../NewCardForm';
+// import NewCardForm from '../NewCardForm';
 
 class App extends Component {
   constructor() {
@@ -25,9 +25,9 @@ class App extends Component {
           <h1 className="App-title"><center>.:: irashaimase ::.</center></h1>
           <h2><center>KANBAN-desu</center></h2>
         </header>
-        <p className="App-intro"><center>
+        <p className="App-intro">
           To get started, create your kanban card and post it to the board!
-        </center></p>
+        </p>
       </div>
     );
   }

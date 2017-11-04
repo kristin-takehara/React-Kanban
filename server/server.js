@@ -8,9 +8,11 @@ const path = require('path');
 const db = require('./models');
 const User = db.user;
 const Card = db.card;
+const Status = db.status;
+const Priority = db.priority;
 
-app.use(bodyParser.urlencoded({extended: true }));
-app.use(express.static('public'));
+app.use(bodyParser.json());
+// app.use(express.static('public'));
 
 //enter routes:
 
