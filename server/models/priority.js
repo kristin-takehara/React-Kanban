@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(sequelize, DataTypes) {
   const priority = sequelize.define('priority', {
     state: {type: DataTypes.STRING, allowNull: false}

@@ -34,15 +34,17 @@ class App extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-    cards: state.cardList
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     cards: state.cardList
+//   }
+// }
 
 
-const ConnectedApp = connect(
-  mapStateToProps, { loadCards }
-)(App);
+// const ConnectedApp = connect(
+//   mapStateToProps, { loadCards }
+// )(App);
 
-export default ConnectedApp;
+// export default ConnectedApp;
+
+export default App;

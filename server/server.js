@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
-// const path = require('path');
+const path = require('path');
 // const routes = require('./routes')
 const db = require('./models');
 const User = db.user;
@@ -14,24 +14,49 @@ app.use(express.static('public'));
 
 //enter routes:
 
-// app.get('/', (req, res) => {
-//   res.send('testing 123');
+app.get('/', (req, res) => {
+  res.send('kon-nichi-wa');
+});
+
+//GET/cards: get all cards
+// app.get('/cards', (req, res) => {
+//   return Card.findAll({
+//     include: [
+//       {model: user, as: "Creator"},
+//       {model: user, as: "Dev"}
+//     ]
+//   })
+//   .then(cards => {
+//     return res.json(cards);
+//   });
 // });
 
+// //GET/users: get all users
+// app.get('/users', (req.res) => {
+//   return User.findAll({
+//     include: [
+//       {model: card, as: "Cards"},
+//       {model: card, as: "Tasks"}
+//     ]
+//   })
+//   .then(users => {
+//     return res.json(users);
+//   });
+// });
 
 //POST/api/users: create a new user
-// app.post('/api/users', (req, res) => {
-//   let data = req.body;
-//   User.create(
-//   {
-//     name: data.name
-//   }
-//   )
-//   .then((data) => {
-//     res.json(data);
-//   }
-//   );
-// });
+app.post('/api/users', (req, res) => {
+  let data = req.body;
+  User.create(
+  {
+    name: data.name
+  }
+  )
+  .then((data) => {
+    res.json(data);
+  }
+  );
+});
 
 
 //POST/api/cards: create a new card

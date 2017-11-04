@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(sequelize, DataTypes) {
   const status = sequelize.define('status', {
     state: {type: DataTypes.STRING, allowNull: false}

@@ -23,9 +23,7 @@
     "eject": "react-scripts eject",
     "server": "nodemon ./server/server.js"
   },
-  "devDependencies": {
-
-  },
+  "devDependencies": {},
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "server.js",
   "repository": {
