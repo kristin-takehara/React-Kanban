@@ -1,11 +1,7 @@
-'use strict';
-
 module.exports = function(sequelize, DataTypes) {
   const user = sequelize.define('user', {
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
+      type: DataTypes.STRING
     }
   },
     {
@@ -14,7 +10,6 @@ module.exports = function(sequelize, DataTypes) {
 
   user.associate = function(models) {
     user.hasMany(models.card, {
-      onUpdate: "CASCADE",
       foreignKey: "assigned_to",
       as: "Tasks"
     });
