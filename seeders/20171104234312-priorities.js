@@ -4,17 +4,17 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('priorities', [
       {
-        state: 'High',
+        type: 'High',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        state: 'Medium',
+        type: 'Medium',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        state: 'Low',
+        type: 'Low',
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -22,22 +22,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('statuses', [
-      {
-        state: 'High',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        state: 'Medium',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        state: 'Low',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
-    ]);
+    return queryInterface.bulkDelete('priorities', null, {});
   }
 };

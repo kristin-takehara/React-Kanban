@@ -10,8 +10,12 @@ module.exports = function(sequelize, DataTypes) {
 
   user.associate = function(models) {
     user.hasMany(models.card, {
-      foreignKey: "assigned_to",
-      as: "Tasks"
+      foreignKey: 'created_by',
+      as: 'Cards'
+    });
+    user.hasMany(models.card, {
+      foreignKey: 'assigned_to',
+      as: 'Tasks'
     });
   };
   return user;

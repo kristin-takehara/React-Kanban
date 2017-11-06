@@ -10,8 +10,8 @@ const Card = db.card;
 const Status = db.status;
 const Priority = db.priority;
 
+app.use(bodyParser.urlencoded({ "extended" : true }));
 app.use(bodyParser.json());
-// app.use(express.static('public'));
 
 //enter routes:
 //testing GET to browser
@@ -47,8 +47,8 @@ app.post('/api/users', (req, res) => {
 app.get('/api/cards', (req, res) => {
   return Card.findAll({
     include: [
-      {model: user, as: "Creator"},
-      {model: user, as: "Dev"}
+      {model: User, as: "Creator"},
+      {model: User, as: "Asignee"}
     ]
   })
   .then(cards => {
@@ -61,14 +61,16 @@ app.post('/api/cards', (req, res) => {
   let title = req.body.title;
   let priority = req.body.priority;
   let status = 1;
-  let assignedTo = req.body.assignedTo
+  let assigned_to = req.body.assigned_to;
+  let created_by = req.body.created_by;
 
   Card.create(
   {
     title: title,
     priority: priority,
     status: status,
-    assignedTo: assignedTo
+    assigned_to: assigned_to,
+    created_by: created_by
   })
   .then((newCard) => {
     res.json(newCard);
