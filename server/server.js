@@ -87,6 +87,32 @@ app.get('/api/card/:id', (req, res) => {
   });
 });
 
+//PUT/api/card/:id
+app.put('/api/card/:id', (req, res) => {
+  let newInfo = req.body;
+  let cardId = req.params.id;
+
+  return Card.findById(cardId)
+  .then(card => {
+    return Card.update(newInfo, {
+      where:[{id: cardId}],
+      returning: true,
+      plain: true
+    })
+    .then(card => {
+      return res.json(card);
+    })
+  });
+});
+
+//GET/api/priorities
+app.get('/api/priorities', (req, res) => {
+  return Priority.findAll()
+  .then(priorities => {
+    return res.json(priorities);
+  });
+});
+
 // app.get('*', (req, res) => {
 //   res.sendFile('index.html', { root: path.join(__dirname, 'public') });
 // });
