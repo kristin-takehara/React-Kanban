@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; //this bridges the component to the redux
 
-// import { loadCards } from '../../actions/cards';
+import { loadUsers } from '../../actions/users';
+import { loadCards, addCard } from '../../actions/cards';
+import { loadPriorities } from '../../actions/priorities';
 
-// import NewCardForm from '../NewCardForm';
+import Columns from '../../components/Columns';
+
+import NewCardForm from '../NewCardForm';
 
 class App extends Component {
   constructor() {
@@ -14,9 +18,12 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.props.loadCards();
-  // }
+  componentDidMount() {
+    this.props.loadCards();
+    this.props.addCard();
+    this.props.loadUsers();
+    this.props.loadPriorities();
+  }
 
   render() {
     return (
@@ -28,23 +35,44 @@ class App extends Component {
         <p className="App-intro">
           To get started, create your kanban card and post it to the board!
         </p>
+        <NewCardForm/>
+        <Columns/>
       </div>
     );
   }
 }
 
 
-// const mapStateToProps = (state) => {
-//   return {
-//     cards: state.cardList
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cardList,
+    card: state.cardList,
+    users: state.usersList,
+    priorities: state.prioritiesList
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    loadCards: () => {
+      dispatch(loadCards())
+    },
+    addCard: () => {
+      dispatch(addCard())
+    },
+    loadUsers: () => {
+      dispatch(loadUsers())
+    },
+    loadPriorities: () => {
+      dispatch(loadPriorities())
+    }
+  };
+};
 
 
-// const ConnectedApp = connect(
-//   mapStateToProps, { loadCards }
-// )(App);
+const ConnectedApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
-// export default ConnectedApp;
-
-export default App;
+export default ConnectedApp;
